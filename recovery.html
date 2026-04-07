@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>OpenWebOS Recovery</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Roboto',sans-serif}
+body{background:#060610;color:#f0f0f8;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px}
+.rec-logo{font-size:13px;font-weight:300;letter-spacing:5px;color:rgba(255,255,255,0.25);text-transform:uppercase;margin-bottom:8px;text-align:center}
+.rec-title{font-size:36px;font-weight:100;letter-spacing:4px;color:#fff;text-align:center;margin-bottom:4px}
+.rec-sub{font-size:12px;font-weight:300;color:rgba(255,255,255,0.3);letter-spacing:2px;text-align:center;margin-bottom:40px}
+.rec-card{width:100%;max-width:380px;background:rgba(22,22,40,0.95);border:1px solid rgba(255,255,255,0.08);border-radius:24px;overflow:hidden}
+.rec-section{padding:18px 22px;border-bottom:1px solid rgba(255,255,255,0.06)}
+.rec-section:last-child{border-bottom:none}
+.rec-section-title{font-size:10px;font-weight:500;color:rgba(255,255,255,0.3);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
+.rec-row{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.rec-row-info{flex:1}
+.rec-row-label{font-size:13px;font-weight:300;color:#fff;margin-bottom:2px}
+.rec-row-desc{font-size:11px;font-weight:300;color:rgba(255,255,255,0.35);line-height:1.5}
+.rec-btn{border:none;border-radius:10px;padding:9px 18px;font-size:12px;font-weight:400;cursor:pointer;font-family:'Roboto',sans-serif;letter-spacing:.5px;white-space:nowrap;transition:.15s}
+.btn-danger{background:rgba(233,69,96,0.18);border:1px solid rgba(233,69,96,0.35);color:#e94560}
+.btn-danger:hover{background:rgba(233,69,96,0.28)}
+.btn-warn{background:rgba(244,162,97,0.15);border:1px solid rgba(244,162,97,0.3);color:#f4a261}
+.btn-warn:hover{background:rgba(244,162,97,0.25)}
+.btn-safe{background:rgba(0,200,150,0.13);border:1px solid rgba(0,200,150,0.28);color:#00c896}
+.btn-safe:hover{background:rgba(0,200,150,0.22)}
+.status{margin-top:20px;width:100%;max-width:380px;min-height:36px;background:rgba(22,22,40,0.8);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:10px 16px;font-size:12px;font-weight:300;color:rgba(255,255,255,0.5);text-align:center;display:none}
+.status.show{display:block}
+.status.ok{color:#00c896;border-color:rgba(0,200,150,0.25)}
+.status.err{color:#e94560;border-color:rgba(233,69,96,0.25)}
+.status.warn{color:#f4a261;border-color:rgba(244,162,97,0.25)}
+.back-link{margin-top:28px;font-size:11px;font-weight:300;color:rgba(255,255,255,0.25);letter-spacing:1px;text-align:center}
+.warning-banner{width:100%;max-width:380px;background:rgba(233,69,96,0.08);border:1px solid rgba(233,69,96,0.2);border-radius:14px;padding:12px 16px;font-size:11px;font-weight:300;color:rgba(255,255,255,0.4);line-height:1.7;margin-bottom:20px;text-align:center}
+</style>
+</head>
+<body>
+<div class="rec-logo">OpenWebOS</div>
+<div class="rec-title">Recovery</div>
+<div class="rec-sub">System Recovery Tools</div>
+
+<div class="warning-banner">⚠️ Recovery tools make permanent changes to your OpenWebOS data.<br>Only use these if you are locked out or experiencing issues.</div>
+
+<div class="rec-card">
+  <div class="rec-section">
+    <div class="rec-section-title">Account</div>
+    <div class="rec-row">
+      <div class="rec-row-info">
+        <div class="rec-row-label">Clear Saved Data</div>
+        <div class="rec-row-desc">Wipes your name, password, wallpaper, and settings. You'll go through setup again.</div>
+      </div>
+      <button class="rec-btn btn-danger" onclick="clearStorage()">Clear Data</button>
+    </div>
+  </div>
+
+  <div class="rec-section">
+    <div class="rec-section-title">Password</div>
+    <div class="rec-row" style="flex-direction:column;align-items:stretch;gap:10px">
+      <div class="rec-row-desc">Reset your password without wiping other settings.</div>
+      <div style="display:flex;gap:8px">
+        <input id="new-pass" type="password" placeholder="New password" style="flex:1;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:9px 14px;color:#fff;font-size:13px;outline:none;font-family:'Roboto',sans-serif">
+        <button class="rec-btn btn-warn" onclick="resetPass()">Reset</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="rec-section">
+    <div class="rec-section-title">Files</div>
+    <div class="rec-row">
+      <div class="rec-row-info">
+        <div class="rec-row-label">Clear Uploaded Files</div>
+        <div class="rec-row-desc">Deletes all files stored in OpenWebOS Files (IndexedDB). Settings are kept.</div>
+      </div>
+      <button class="rec-btn btn-warn" onclick="clearFiles()">Clear Files</button>
+    </div>
+  </div>
+
+  <div class="rec-section">
+    <div class="rec-section-title">Diagnostics</div>
+    <div class="rec-row">
+      <div class="rec-row-info">
+        <div class="rec-row-label">View Saved Data</div>
+        <div class="rec-row-desc">Inspect what's currently stored in localStorage.</div>
+      </div>
+      <button class="rec-btn btn-safe" onclick="viewData()">Inspect</button>
+    </div>
+  </div>
+</div>
+
+<div class="status" id="status"></div>
+<div class="back-link">← Close this tab and reopen OpenWebOS to apply changes</div>
+
+<script>
+function setStatus(msg,type){var s=document.getElementById('status');s.textContent=msg;s.className='status show '+(type||'');setTimeout(function(){s.className='status';},4000);}
+
+function clearStorage(){
+  if(!confirm('This will wipe ALL OpenWebOS data including your name, password, and settings. Continue?'))return;
+  try{localStorage.removeItem('owos2');setStatus('✓ Data cleared. You can now reopen OpenWebOS and set up fresh.','ok');}
+  catch(e){setStatus('✗ Failed: '+e.message,'err');}
+}
+
+function resetPass(){
+  var p=document.getElementById('new-pass').value;
+  if(!p){setStatus('Enter a new password first.','warn');return;}
+  try{
+    var raw=localStorage.getItem('owos2');
+    if(!raw){setStatus('No OpenWebOS data found. Clear data and set up fresh.','err');return;}
+    var d=JSON.parse(raw);d.userPass=p;localStorage.setItem('owos2',JSON.stringify(d));
+    document.getElementById('new-pass').value='';
+    setStatus('✓ Password reset for "'+d.userName+'". You can now log in.','ok');
+  }catch(e){setStatus('✗ Failed: '+e.message,'err');}
+}
+
+function clearFiles(){
+  if(!confirm('Delete all uploaded files from OpenWebOS Files? This cannot be undone.'))return;
+  var req=indexedDB.open('owos-files',1);
+  req.onsuccess=function(e){
+    var db=e.target.result;
+    try{
+      var tx=db.transaction('files','readwrite');tx.objectStore('files').clear();
+      tx.oncomplete=function(){setStatus('✓ All files deleted.','ok');};
+      tx.onerror=function(){setStatus('✗ Failed to clear files.','err');};
+    }catch(err){setStatus('✗ Error: '+err.message,'err');}
+  };
+  req.onerror=function(){setStatus('✗ Could not open file database.','err');};
+  req.onupgradeneeded=function(e){e.target.result.createObjectStore('files',{keyPath:'path'});};
+}
+
+function viewData(){
+  try{
+    var raw=localStorage.getItem('owos2');
+    if(!raw){setStatus('No OpenWebOS data found in localStorage.','warn');return;}
+    var d=JSON.parse(raw);
+    setStatus('User: '+d.userName+' | WP: '+d.wpClass+' | Accent: '+d.accentColor+' | Dock: ['+d.dockApps+']','ok');
+  }catch(e){setStatus('✗ Could not read data: '+e.message,'err');}
+}
+</script>
+</body>
+</html>

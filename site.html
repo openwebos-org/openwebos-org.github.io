@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>OpenWebOS — OS-in-a-browser</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    :root{
+      --acc:#00b4d8;
+      --bg:#f6f7fb;
+      --surface:#ffffff;
+      --txt:#111827;
+      --muted:rgba(17,24,39,0.70);
+      --muted2:rgba(17,24,39,0.55);
+      --stroke:rgba(17,24,39,0.12);
+      /* MD-1-ish elevations */
+      --e1:0 1px 3px rgba(0,0,0,0.18), 0 1px 2px rgba(0,0,0,0.24);
+      --e2:0 3px 6px rgba(0,0,0,0.20), 0 3px 6px rgba(0,0,0,0.28);
+      --e3:0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Roboto,system-ui,-apple-system,Segoe UI,Arial,sans-serif;
+      color:var(--txt);
+      background:var(--bg);
+      overflow-x:hidden;
+    }
+    .wrap{max-width:1080px;margin:0 auto;padding:0 18px 54px}
+    .top{
+      position:sticky;top:0;z-index:10;
+      display:flex;align-items:center;gap:12px;justify-content:space-between;
+      padding:14px 18px;
+      background:var(--acc);
+      color:#fff;
+      box-shadow:var(--e2);
+      margin:0 -18px 18px;
+    }
+    .brand{display:flex;align-items:center;gap:10px}
+    .brand h1{margin:0;font-size:16px;font-weight:500;letter-spacing:.2px;color:#fff}
+    .brand .sub{font-size:12px;color:rgba(255,255,255,0.90);letter-spacing:.1px}
+    .btn{
+      appearance:none;border:none;cursor:pointer;text-decoration:none;
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      padding:10px 14px;border-radius:2px;
+      background:#fff;
+      color:rgba(17,24,39,0.92);
+      border:0;
+      box-shadow:var(--e1);
+      transition:box-shadow .12s ease, transform .12s ease, background .12s ease;
+      font-size:12px;font-weight:400;
+    }
+    .btn:hover{box-shadow:var(--e2);transform:translateY(-1px)}
+    .btn.primary{
+      background:var(--acc);
+      color:#fff;
+      box-shadow:var(--e2);
+      border:0;
+    }
+    .btn.primary:hover{filter:brightness(0.97);transform:translateY(-1px)}
+    .top .btn{background:rgba(255,255,255,0.10);color:#fff;border:1px solid rgba(255,255,255,0.45);box-shadow:none}
+    .top .btn:hover{background:rgba(255,255,255,0.16);box-shadow:none}
+    .top .btn.primary{background:#fff;color:rgba(17,24,39,0.92);border:0;box-shadow:var(--e1)}
+    .top .btn.primary:hover{background:#fff;box-shadow:var(--e2)}
+    .appbar-wave{position:relative;margin:0 -18px 18px}
+    .appbar-wave svg{display:block;width:100%;height:34px}
+    .hero{
+      margin-top:18px;
+      display:grid;grid-template-columns:1.1fr .9fr;gap:16px;
+    }
+    @media (max-width: 920px){.hero{grid-template-columns:1fr}}
+    .panel{
+      border:1px solid rgba(0,0,0,0.10);
+      border-radius:2px;
+      background:var(--surface);
+      overflow:hidden;
+      box-shadow:var(--e1);
+    }
+    .heroMain{padding:26px 24px}
+    .kicker{
+      display:inline-flex;align-items:center;
+      font-size:12px;letter-spacing:.4px;
+      color:var(--muted2);
+    }
+    .title{margin:12px 0 10px;font-weight:300;letter-spacing:.2px;font-size:40px;line-height:1.15}
+    @media (max-width: 520px){.title{font-size:36px}}
+    .lead{margin:0 0 18px;color:var(--muted);font-weight:300;line-height:1.65}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    .hint{
+      margin-top:18px;
+      padding:12px 14px;border-radius:2px;
+      background:#fff;
+      border:1px solid rgba(0,0,0,0.10);
+      color:var(--muted);
+      font-size:12px;line-height:1.6;font-weight:300;
+    }
+    .hint b{color:rgba(17,24,39,0.95);font-weight:500}
+    .side{padding:18px 18px 8px}
+    .side h2{margin:4px 0 10px;font-size:12px;letter-spacing:1.2px;text-transform:uppercase;color:rgba(17,24,39,0.70);font-weight:500}
+    .list{display:flex;flex-direction:column;gap:10px}
+    .item{
+      padding:12px 12px;border-radius:2px;
+      border:1px solid rgba(0,0,0,0.10);
+      background:#ffffff;
+    }
+    .item .h{display:flex;align-items:center}
+    .item .t{font-size:13px;font-weight:500;color:rgba(17,24,39,0.92)}
+    .item .d{margin-top:6px;color:var(--muted);font-size:12px;line-height:1.55;font-weight:300}
+    .footer{
+      margin-top:16px;
+      display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;
+      color:rgba(17,24,39,0.52);font-size:11px;font-weight:300;
+      padding:0 2px;
+    }
+    .footer a{color:rgba(17,24,39,0.70);text-decoration:none}
+    .footer a:hover{color:rgba(17,24,39,0.92);text-decoration:underline}
+    
+    .section-head{margin:18px 0 14px;font-size:14px;font-weight:500;letter-spacing:.5px;text-transform:uppercase;color:var(--muted2)}
+    .feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-bottom:18px}
+    .feature-card{background:var(--surface);border:1px solid rgba(0,0,0,0.10);border-radius:2px;padding:18px 16px;box-shadow:var(--e1)}
+    .feature-icon{font-family:'Material Icons';font-size:28px;color:var(--acc);margin-bottom:10px}
+    .feature-title{font-size:14px;font-weight:500;margin-bottom:6px}
+    .feature-desc{font-size:12px;color:var(--muted);line-height:1.55;font-weight:300}
+    .panel-body{padding:20px 20px}
+    .panel-body p{margin:0 0 14px;color:var(--muted);font-size:13px;line-height:1.65;font-weight:300}
+    .panel-body p:last-child{margin-bottom:0}
+    .about-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+    .ver-row{display:flex;align-items:center;gap:12px;padding:8px 0}
+    .ver-row + .ver-row{border-top:1px solid rgba(0,0,0,0.08)}
+    .ver-badge{padding:4px 10px;border-radius:2px;font-size:11px;font-weight:500;text-transform:uppercase}
+    .ver-badge:first-child{background:rgba(0,180,216,0.15);color:#00b4d8}
+    .ver-badge:last-child{background:rgba(17,24,39,0.08);color:var(--muted)}
+    .ver-name{font-size:13px;font-weight:500}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="top">
+      <div class="brand">
+        <div>
+          <h1>OpenWebOS <span style="font-size:12px;font-weight:300;opacity:0.85">v2.0.0</span></h1>
+          <div class="sub">Lemming Funeral</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end">
+        <a class="btn waves-effect" href="https://openwebos-org.github.io" target="_blank" rel="noopener">openwebos-org.github.io</a>
+        <a class="btn primary waves-effect" href="get.html">Get OS</a>
+      </div>
+    </div>
+    
+
+    <div class="hero">
+      <div class="panel heroMain">
+        <div class="kicker">v2.0.0 — Lemming Funeral</div>
+        <div class="title">Cards. Apps. Gestures.</div>
+        <p class="lead">
+          OpenWebOS brings an OS-in-a-browser experience with an app drawer, windowed apps, and a Cards Overview for multitasking.
+          If you want builds hosted on GitHub Pages, use <b>Get OS</b>.
+        </p>
+        <div class="actions">
+          <a class="btn primary waves-effect" href="get.html">Get OS</a>
+          <a class="btn waves-effect" href="https://openwebos-org.github.io/rc/rc-alpha" target="_blank" rel="noopener">Go to OpenWebOS</a>
+          <a class="btn waves-effect" href="local.html">Local install</a>
+          <a class="btn waves-effect" href="docs.html">Learn More</a>
+        </div>
+        <div class="hint">
+          <b>Cards Overview</b>: swipe up from the <b>bottom-left</b> or <b>bottom-right</b> corner on touch devices.
+          On Mac trackpad, do a quick <b>swipe up near the bottom corners</b> to open overview.
+          You can also map the <b>OpenWebOS Key</b> action to <b>Open Cards Overview</b> in Settings.
+        </div>
+      </div>
+
+      <div class="panel side">
+        <h2>Quick tips</h2>
+        <div class="list">
+          <div class="item">
+            <div class="h">
+              <div class="t">Cards Overview</div>
+            </div>
+            <div class="d">Swipe up from bottom corners (touch). Trackpad wheel gesture is supported while avoiding in‑app scrolling.</div>
+          </div>
+          <div class="item">
+            <div class="h">
+              <div class="t">OpenWebOS Key</div>
+            </div>
+            <div class="d">Press the Meta/Command key to run your configured action (now includes “Open Cards Overview”).</div>
+          </div>
+          <div class="item">
+            <div class="h">
+              <div class="t">Customize</div>
+            </div>
+            <div class="d">Use Settings to toggle features and configure shortcuts. Your changes persist via local storage.</div>
+          </div>
+        </div>
+
+        <div class="footer">
+          <div>OpenWebOS is hosted at <a href="https://openwebos-org.github.io" target="_blank" rel="noopener">openwebos-org.github.io</a>.</div>
+          <div><a href="get.html">Get OS</a></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="features">
+      <h2 class="section-head">Features</h2>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">apps</div>
+          <div class="feature-title">App Drawer</div>
+          <div class="feature-desc">Access your apps quickly with a swipe-up gesture or click on the dock.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">grid_view</div>
+          <div class="feature-title">Cards Overview</div>
+          <div class="feature-desc">See all open windows at a glance and switch between tasks effortlessly.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">tune</div>
+          <div class="feature-title">Settings</div>
+          <div class="feature-desc">Customize shortcuts, toggle features, and personalize your experience.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">cloud</div>
+          <div class="feature-title">Persistent Storage</div>
+          <div class="feature-desc">Your settings and data are saved locally and persist across sessions.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="version-card">
+      <h2 class="section-head">Latest Versions</h2>
+      <div class="panel">
+        <div class="panel-body">
+          <div class="ver-row">
+            <span class="ver-badge">Latest</span>
+            <span class="ver-name">v2.0.0 Lemming Funeral</span>
+          </div>
+          <div class="ver-row">
+            <span class="ver-badge">Oldest</span>
+            <span class="ver-name">v1.0.3 Software Sunset</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-section">
+      <h2 class="section-head">About</h2>
+      <div class="panel">
+        <div class="panel-body">
+          <p>OpenWebOS is an experimental project exploring what a browser-based operating system can look and feel like. Built entirely with web technologies, it runs entirely in your browser with no server-side processing.</p>
+          <p>The project is open source and maintained by the community. Contributions are welcome!</p>
+          <div class="about-links">
+            <a class="btn waves-effect" href="https://github.com/openwebos-org" target="_blank" rel="noopener">View on GitHub</a>
+            <a class="btn waves-effect" href="get.html">Get Started</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>

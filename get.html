@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Get OpenWebOS — OS-in-a-browser</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <style>
+    :root{
+      --acc:#00b4d8;
+      --bg:#f6f7fb;
+      --surface:#ffffff;
+      --txt:#111827;
+      --muted:rgba(17,24,39,0.70);
+      --stroke:rgba(17,24,39,0.12);
+      /* MD-1-ish elevations */
+      --e1:0 1px 3px rgba(0,0,0,0.18), 0 1px 2px rgba(0,0,0,0.24);
+      --e2:0 3px 6px rgba(0,0,0,0.20), 0 3px 6px rgba(0,0,0,0.28);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Roboto,system-ui,-apple-system,Segoe UI,Arial,sans-serif;
+      background:var(--bg);
+      color:var(--txt);
+    }
+    .wrap{max-width:860px;margin:0 auto;padding:0 18px 54px}
+    .top{
+      position:sticky;top:0;z-index:10;
+      display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+      background:var(--acc);
+      color:#fff;
+      padding:14px 18px;
+      box-shadow:var(--e2);
+      margin:0 -18px 18px;
+    }
+    .brand{display:flex;align-items:center;gap:10px}
+    .title{margin:0;font-size:16px;font-weight:500;color:#fff}
+    .sub{margin-top:2px;font-size:12px;color:rgba(255,255,255,0.90)}
+    .btn{
+      appearance:none;border:none;cursor:pointer;text-decoration:none;
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:10px 14px;border-radius:2px;
+      background:rgba(255,255,255,0.10);
+      color:#fff;
+      border:1px solid rgba(255,255,255,0.45);
+      font-size:12px;font-weight:500;
+    }
+    .btn.primary{
+      background:#fff;
+      color:rgba(17,24,39,0.92);
+      border:0;
+      box-shadow:var(--e1);
+    }
+    .appbar-wave{position:relative;margin:0 -18px 18px}
+    .appbar-wave svg{display:block;width:100%;height:34px}
+    .btnRow{display:flex;gap:10px;flex-wrap:wrap}
+    .card{
+      margin-top:16px;
+      background:var(--surface);
+      border:1px solid rgba(0,0,0,0.10);
+      border-radius:2px;
+      box-shadow:var(--e1);
+      overflow:hidden;
+    }
+    .cardHd{padding:16px 16px 8px}
+    .cardHd h2{margin:0;font-size:18px;font-weight:500}
+    .cardHd p{margin:8px 0 0;color:var(--muted);line-height:1.6;font-size:13px}
+    .list{padding:6px 8px 10px}
+    .row{
+      display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;
+      padding:12px 10px;border-radius:2px;
+    }
+    .row + .row{border-top:1px solid rgba(17,24,39,0.08);border-radius:0}
+    .rowMain{min-width:240px}
+    .rowT{font-weight:500;font-size:13px}
+    .rowD{margin-top:2px;color:var(--muted);font-size:12px;line-height:1.5}
+    .link{
+      color:rgba(17,24,39,0.90);
+      text-decoration:none;
+      font-size:12px;
+      padding:8px 10px;border-radius:2px;
+      border:1px solid rgba(0,0,0,0.14);
+      background:#ffffff;
+      white-space:nowrap;
+    }
+    .link:hover{border-color:rgba(0,180,216,0.35)}
+    .warn{
+      margin:14px 16px 16px;
+      padding:12px 12px;
+      border-radius:2px;
+      background:rgba(245,158,11,0.10);
+      border:1px solid rgba(245,158,11,0.22);
+      color:rgba(17,24,39,0.85);
+      font-size:12px;line-height:1.6;
+    }
+    .footer{
+      margin-top:14px;
+      color:rgba(17,24,39,0.55);
+      font-size:11px;
+      display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;
+      padding:0 2px;
+    }
+    .footer a{color:rgba(17,24,39,0.75);text-decoration:none}
+    .footer a:hover{text-decoration:underline}
+    
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="top">
+      <div class="brand">
+        <div>
+          <div class="title">Get OpenWebOS</div>
+          <div class="sub">OS-in-a-browser builds hosted on GitHub Pages</div>
+        </div>
+      </div>
+      <div class="btnRow">
+        <a class="btn waves-effect" href="site.html">Back</a>
+        <a class="btn primary waves-effect" href="https://openwebos-org.github.io" target="_blank" rel="noopener">openwebos-org.github.io</a>
+      </div>
+    </div>
+    <div class="appbar-wave" aria-hidden="true">
+      <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M0,32 C120,60 240,76 360,64 C480,52 600,12 720,16 C840,20 960,68 1080,72 C1140,74 1170,68 1200,62 L1200,120 L0,120 Z" fill="#00b4d8"></path>
+      </svg>
+    </div>
+
+    <div class="card">
+      <div class="cardHd">
+        <h2>Versions</h2>
+        <p>Pick a build to open in your browser.</p>
+      </div>
+
+      <div class="list">
+        <div class="row">
+          <div class="rowMain">
+            <div class="rowT">Latest alpha with Cards UI</div>
+          </div>
+          <a class="link waves-effect waves-dark" href="https://openwebos-org.github.io/rc/rc-alpha" target="_blank" rel="noopener">Open</a>
+        </div>
+
+        <div class="row">
+          <div class="rowMain">
+            <div class="rowT">Latest beta</div>
+          </div>
+          <a class="link waves-effect waves-dark" href="https://openwebos-org.github.io/rc/rc-beta" target="_blank" rel="noopener">Open</a>
+        </div>
+
+        <div class="row">
+          <div class="rowMain">
+            <div class="rowT">Most stable</div>
+          </div>
+          <a class="link waves-effect waves-dark" href="https://openwebos-org.github.io/rc/rc-rc" target="_blank" rel="noopener">Open</a>
+        </div>
+      </div>
+
+      <div class="cardHd" style="padding-top:10px">
+        <h2 style="font-size:16px;margin:0">Older builds</h2>
+      </div>
+      <div class="warn">
+        We highly do not recommend using a older version of OpenWebOS. Expect to see a localStorage + IndexedDB hybrid.
+      </div>
+      <div class="list" style="padding-top:0">
+        <div class="row">
+          <div class="rowMain">
+            <div class="rowT">Old</div>
+          </div>
+          <a class="link waves-effect waves-dark" href="https://openwebos-org.github.io/old" target="_blank" rel="noopener">Open</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div>OpenWebOS is hosted at <a href="https://openwebos-org.github.io" target="_blank" rel="noopener">openwebos-org.github.io</a>.</div>
+      <div><a href="https://openwebos-org.github.io/rc/rc-alpha" target="_blank" rel="noopener">Go to OpenWebOS</a></div>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>

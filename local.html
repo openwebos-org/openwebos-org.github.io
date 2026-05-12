@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>OpenWebOS — Local install</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <style>
+    body { background-color: #f6f7fb; }
+    nav { background-color: #00b4d8 !important; }
+    .brand-logo { font-size: 1.1rem !important; padding-left: 15px; }
+    .appbar-wave { position: relative; margin-top: -1px; }
+    .appbar-wave svg { display: block; width: 100%; height: 34px; }
+    .blk { background: #f5f5f5; padding: 15px; border-radius: 4px; font-family: monospace; white-space: pre-wrap; margin: 10px 0; border: 1px solid #ddd; }
+    .sectionTitle { font-weight: bold; margin-top: 15px; display: block; }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="site.html" class="brand-logo left">Local Installation</a>
+      <ul class="right">
+        <li><a href="site.html" class="waves-effect">Back</a></li>
+        <li><a href="https://github.com/openwebos-org" class="btn white black-text waves-effect waves-dark">GitHub</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="appbar-wave" aria-hidden="true">
+      <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M0,32 C120,60 240,76 360,64 C480,52 600,12 720,16 C840,20 960,68 1080,72 C1140,74 1170,68 1200,62 L1200,120 L0,120 Z" fill="#00b4d8"></path>
+      </svg>
+    </div>
+
+    <div class="card white">
+      <div class="card-content">
+        <span class="card-title">Instructions</span>
+        <p class="grey-text">Follow these steps to download and run OpenWebOS on your device.</p>
+        
+        <ol>
+          <li>
+            Open our <a href="https://github.com/openwebos-org" target="_blank">GitHub Organization</a>.
+          </li>
+          <li>
+            Pick a repository:
+            <div class="blk">rc is a structured repository meaning that it has folders with extra OpenWebOS builds.</div>
+          </li>
+          <li>
+            Pick RC builds (applies only if you used openwebos-org/rc):
+            <div class="sectionTitle">The file structure:</div>
+            <div class="blk">Root Directory:
+- LICENSE
+- index.html (old build not mentioned in Get OS)
+- recovery.html
+
+Subdirectories:
+1. /rc-alpha/ (Latest alpha with Cards UI)
+   - beta.html
+   - index.html
+
+2. /rc-beta/ (Latest beta)
+   - beta.html
+   - index.html
+   - recovery.html
+
+3. /rc-rc/ (Most stable)
+   - index.html</div>
+            <div class="blk">Select Code then Download ZIP.</div>
+          </li>
+          <li>
+            To install a different OpenWebOS version:
+            <div class="blk">Select Code then Download ZIP.</div>
+          </li>
+          <li>
+            How to open file. Explain this
+            <div class="blk">After downloading the ZIP:
+1) Extract/unzip it.
+2) Open the folder you extracted.
+3) Open the main HTML file in a browser:
+   - For rc-alpha: open rc-alpha/beta.html (Cards UI) or rc-alpha/index.html
+   - For rc-beta: open rc-beta/beta.html or rc-beta/index.html
+   - For most stable rc-rc: open rc-rc/index.html
+
+Important notes:
+- Some browsers block certain features when opening files directly (file://). If something doesn't work, try another browser.
+- Your settings and data are saved in localStorage/IndexedDB in your browser profile, not inside the ZIP.</div>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>

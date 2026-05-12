@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>404 — Page Not Found</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <style>
+    :root{
+      --acc:#00b4d8;
+      --bg:#f6f7fb;
+      --surface:#ffffff;
+      --txt:#111827;
+      --muted:rgba(17,24,39,0.70);
+      --e1:0 1px 3px rgba(0,0,0,0.18), 0 1px 2px rgba(0,0,0,0.24);
+      --e2:0 3px 6px rgba(0,0,0,0.20), 0 3px 6px rgba(0,0,0,0.28);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Roboto,system-ui,-apple-system,Segoe UI,Arial,sans-serif;
+      background:var(--bg);
+      color:var(--txt);
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+    }
+    .top{
+      background:var(--acc);
+      padding:14px 18px;
+      box-shadow:var(--e2);
+    }
+    .brand h1{margin:0;font-size:16px;font-weight:500;color:#fff}
+    .container{
+      flex:1;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:40px 18px;
+    }
+    .code{font-size:72px;font-weight:300;color:var(--acc);margin:0;line-height:1}
+    .msg{font-size:20px;font-weight:300;margin:12px 0;color:var(--muted)}
+    .sub{font-size:14px;color:var(--muted);margin-bottom:24px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:10px 14px;border-radius:2px;
+      background:var(--acc);color:#fff;
+      box-shadow:var(--e2);
+      text-decoration:none;
+      font-size:12px;font-weight:400;
+    }
+    .btn:hover{filter:brightness(0.97)}
+  </style>
+</head>
+<body>
+  <div class="top">
+    <div class="brand">
+      <h1>OpenWebOS</h1>
+    </div>
+  </div>
+  <div class="container">
+    <div class="code">404</div>
+    <div class="msg">Page not found</div>
+    <div class="sub">The page you're looking for doesn't exist.</div>
+    <a class="btn waves-effect" href="site.html">Go Home</a>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>

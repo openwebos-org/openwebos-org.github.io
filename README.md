@@ -13,7 +13,7 @@ Open `beta.html` in a browser, or visit the hosted version at **[openwebos-org.g
 ### Window Management
 - **Cards Overview** — Swipe up from bottom corners to see all open windows as cards. Gesture navigation on touch and trackpad. Spring-animated 60fps transitions.
 - **Card Windows** — Draggable, resizable windows with macOS-style traffic light dots (close/minimize/fullscreen). Fullscreen mode fills the desktop.
-- **Multi-card Layout** — Stack and switch between cards, active card highlighting, smooth scale/fade transitions
+- **Switch between Cards and Windows** — All in settings.
 ### Built-in Apps
 | App | Description |
 |-----|-------------|

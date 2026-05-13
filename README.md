@@ -28,7 +28,6 @@ Open `beta.html` in a browser, or visit the hosted version at **[openwebos-org.g
 | **Notes** | Sticky notes with add/remove, scrollable list |
 | **Contacts** | Contact list with avatars, phone/email display |
 | **Settings** | Wallpaper, accent color, dock, widgets, users, keyboard, language, about, Siri-ish mode toggle |
-| **About** | Device info, version, build details |
 | **App Store** | Browse and install available apps |
 ### Persistence
 - User profiles, settings, wallpaper, accent color, dock layout, widgets, files, notes, contacts all persist via `localStorage`

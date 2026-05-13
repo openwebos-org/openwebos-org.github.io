@@ -18,7 +18,7 @@ Open `beta.html` in a browser, or visit the hosted version at **[openwebos-org.g
 | App | Description |
 |-----|-------------|
 | **Siri-ish** | AI assistant with chat UI, two modes (new/legacy). Ask questions, open apps, do math. 100% local. |
-| **Terminal** | UNIX-like shell: `ls`, `cd`, `cat`, `echo`, `pwd`, `whoami`, `neofetch`, `uptime`, `cal`, `clear`, `help` |
+| **Terminal** | OWOTS (OpenWebOS Terminal Standard) shell: `ls`, `cd`, `cat`, `echo`, `pwd`, `whoami`, `neofetch`, `uptime`, `cal`, `clear`, `help` `app` |
 | **Files** | File manager with folder navigation, sizes, create/delete/rename, home/docs/downloads/pictures/music/video dirs |
 | **Music** | Audio player with demo tracks, play/pause/next/prev, progress bar, shuffle |
 | **Weather** | Live weather with temperature, conditions, humidity, wind speed, location |

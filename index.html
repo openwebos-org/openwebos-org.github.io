@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="icon" href="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%2Fid%2FOIP.9Gvvlwkiso-oRNs9_0W3tQHaHN%3Fpid%3DApi&f=1&ipt=dcdeec9f31700072643afa66c59d2765fb7372ee1d4abd68aea70a3d6d5e5b70&ipo=images">
   <style>
     :root{
       --acc:#00b4d8;
@@ -18,7 +19,6 @@
       --muted:rgba(17,24,39,0.70);
       --muted2:rgba(17,24,39,0.55);
       --stroke:rgba(17,24,39,0.12);
-      /* MD-1-ish elevations */
       --e1:0 1px 3px rgba(0,0,0,0.18), 0 1px 2px rgba(0,0,0,0.24);
       --e2:0 3px 6px rgba(0,0,0,0.20), 0 3px 6px rgba(0,0,0,0.28);
       --e3:0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
@@ -137,12 +137,28 @@
     .ver-badge:first-child{background:rgba(0,180,216,0.15);color:#00b4d8}
     .ver-badge:last-child{background:rgba(17,24,39,0.08);color:var(--muted)}
     .ver-name{font-size:13px;font-weight:500}
+    .app-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin-bottom:18px}
+    .app-card{background:var(--surface);border:1px solid rgba(0,0,0,0.10);border-radius:2px;padding:14px 12px;box-shadow:var(--e1);text-align:center}
+    .app-card .icon{font-family:'Material Icons';font-size:32px;color:var(--acc);margin-bottom:6px}
+    .app-card .name{font-size:13px;font-weight:500}
+    .app-card .desc{font-size:11px;color:var(--muted);margin-top:2px;font-weight:300}
+    .siri-section{background:linear-gradient(135deg,#0a1628,#16213e);border-radius:2px;padding:28px 24px;margin:18px 0;color:#fff;display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center;box-shadow:var(--e2)}
+    @media(max-width:720px){.siri-section{grid-template-columns:1fr}}
+    .siri-left .icon{font-size:40px;margin-bottom:8px}
+    .siri-left h3{margin:0 0 10px;font-weight:300;font-size:24px;color:#fff}
+    .siri-left p{color:rgba(255,255,255,0.6);font-size:13px;line-height:1.7;font-weight:300;margin:0}
+    .siri-right{display:flex;flex-direction:column;gap:14px}
+    .siri-feat{display:flex;gap:12px;align-items:flex-start}
+    .siri-feat .sf-icon{font-family:'Material Icons';font-size:20px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;background:rgba(0,180,216,0.15);border-radius:2px;flex-shrink:0;color:#00b4d8}
+    .siri-feat .sf-title{font-size:13px;font-weight:500;color:#fff;margin-bottom:2px}
+    .siri-feat .sf-desc{font-size:11px;color:rgba(255,255,255,0.5);line-height:1.5;font-weight:300}
   </style>
 </head>
 <body>
   <div class="wrap">
     <div class="top">
       <div class="brand">
+        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%2Fid%2FOIP.9Gvvlwkiso-oRNs9_0W3tQHaHN%3Fpid%3DApi&f=1&ipt=dcdeec9f31700072643afa66c59d2765fb7372ee1d4abd68aea70a3d6d5e5b70&ipo=images" alt="" style="width:40px;height:40px;border-radius:8px;flex-shrink:0">
         <div>
           <h1>OpenWebOS <span style="font-size:12px;font-weight:300;opacity:0.85">v2.0.0</span></h1>
           <div class="sub">Lemming Funeral</div>
@@ -154,13 +170,12 @@
       </div>
     </div>
     
-
     <div class="hero">
       <div class="panel heroMain">
         <div class="kicker">v2.0.0 — Lemming Funeral</div>
         <div class="title">Cards. Apps. Gestures.</div>
         <p class="lead">
-          OpenWebOS brings an OS-in-a-browser experience with an app drawer, windowed apps, and a Cards Overview for multitasking.
+          OpenWebOS brings an OS-in-a-browser experience with an app drawer, windowed apps, a Siri-like assistant, and a Cards Overview for multitasking.
           If you want builds hosted on GitHub Pages, use <b>Get OS</b>.
         </p>
         <div class="actions">
@@ -189,7 +204,13 @@
             <div class="h">
               <div class="t">OpenWebOS Key</div>
             </div>
-            <div class="d">Press the Meta/Command key to run your configured action (now includes “Open Cards Overview”).</div>
+            <div class="d">Press the Meta/Command key to run your configured action (now includes "Open Cards Overview").</div>
+          </div>
+          <div class="item">
+            <div class="h">
+              <div class="t">Siri-ish</div>
+            </div>
+            <div class="d">Your AI assistant. Ask questions, open apps, check weather, calculate math — all from one prompt.</div>
           </div>
           <div class="item">
             <div class="h">
@@ -206,29 +227,136 @@
       </div>
     </div>
 
-    <div class="features">
-      <h2 class="section-head">Features</h2>
-      <div class="feature-grid">
-        <div class="feature-card">
-          <div class="feature-icon">apps</div>
-          <div class="feature-title">App Drawer</div>
-          <div class="feature-desc">Access your apps quickly with a swipe-up gesture or click on the dock.</div>
+    <div class="siri-section">
+      <div class="siri-left">
+        <div class="icon">🔮</div>
+        <h3>Siri-ish</h3>
+        <p>Your AI-powered assistant built into OpenWebOS. Ask questions, open apps, check the weather, do math, and more — all by typing or speaking. Everything runs locally with no server calls.</p>
+        <div class="actions" style="margin-top:16px">
+          <a class="btn primary waves-effect" href="https://openwebos-org.github.io/rc/rc-alpha" target="_blank" rel="noopener">Try Siri-ish →</a>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon">grid_view</div>
-          <div class="feature-title">Cards Overview</div>
-          <div class="feature-desc">See all open windows at a glance and switch between tasks effortlessly.</div>
+      </div>
+      <div class="siri-right">
+        <div class="siri-feat">
+          <div class="sf-icon">chat</div>
+          <div><div class="sf-title">Natural Language</div><div class="sf-desc">Ask anything in plain English — "what's the weather?", "open calculator", "12 * 45"</div></div>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon">tune</div>
-          <div class="feature-title">Settings</div>
-          <div class="feature-desc">Customize shortcuts, toggle features, and personalize your experience.</div>
+        <div class="siri-feat">
+          <div class="sf-icon">apps</div>
+          <div><div class="sf-title">App Integration</div><div class="sf-desc">Launch apps, search the web, calculate math, check dates, and control settings</div></div>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon">cloud</div>
-          <div class="feature-title">Persistent Storage</div>
-          <div class="feature-desc">Your settings and data are saved locally and persist across sessions.</div>
+        <div class="siri-feat">
+          <div class="sf-icon">tune</div>
+          <div><div class="sf-title">Two Modes</div><div class="sf-desc">New mode with enhanced responses and legacy mode. Switch anytime in Settings.</div></div>
         </div>
+        <div class="siri-feat">
+          <div class="sf-icon">lock</div>
+          <div><div class="sf-title">100% Local</div><div class="sf-desc">All processing happens in your browser — no data sent to any server. Your privacy is guaranteed.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="siri-section" style="background:linear-gradient(135deg,#0a1a2e,#1a2a3e)">
+      <div class="siri-left">
+        <div class="icon">📱</div>
+        <h3>Cards Overview</h3>
+        <p>Multitasking reimagined. Swipe up from the bottom corners to see all open windows at a glance. Switch between apps, close cards, and manage your workflow with gesture support on touch and trackpad.</p>
+        <div class="actions" style="margin-top:16px">
+          <a class="btn primary waves-effect" href="https://openwebos-org.github.io/rc/rc-alpha" target="_blank" rel="noopener">Try Cards Overview →</a>
+        </div>
+      </div>
+      <div class="siri-right">
+        <div class="siri-feat">
+          <div class="sf-icon">gesture</div>
+          <div><div class="sf-title">Gesture Navigation</div><div class="sf-desc">Swipe up from bottom-left or bottom-right corners on touch devices. Trackpad wheel supported.</div></div>
+        </div>
+        <div class="siri-feat">
+          <div class="sf-icon">grid_view</div>
+          <div><div class="sf-title">Visual Overview</div><div class="sf-desc">See every open app as a card. Tap to switch, swipe to close, or drag to rearrange.</div></div>
+        </div>
+        <div class="siri-feat">
+          <div class="sf-icon">keyboard</div>
+          <div><div class="sf-title">OpenWebOS Key</div><div class="sf-desc">Map the Meta/Command key to open Cards Overview. Configurable in Settings.</div></div>
+        </div>
+        <div class="siri-feat">
+          <div class="sf-icon">flash_on</div>
+          <div><div class="sf-title">Smooth Animation</div><div class="sf-desc">Fluid 60fps transitions with spring physics. Cards scale and fade for a native feel.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-head">Apps</h2>
+    <div class="app-grid">
+      <div class="app-card"><div class="icon">adb</div><div class="name">Siri-ish</div><div class="desc">Voice assistant</div></div>
+      <div class="app-card"><div class="icon">terminal</div><div class="name">Terminal</div><div class="desc">UNIX-like shell</div></div>
+      <div class="app-card"><div class="icon">folder</div><div class="name">Files</div><div class="desc">File manager</div></div>
+      <div class="app-card"><div class="icon">music_note</div><div class="name">Music</div><div class="desc">Audio player</div></div>
+      <div class="app-card"><div class="icon">wb_sunny</div><div class="name">Weather</div><div class="desc">Forecast</div></div>
+      <div class="app-card"><div class="icon">calculate</div><div class="name">Calculator</div><div class="desc">Math engine</div></div>
+      <div class="app-card"><div class="icon">settings</div><div class="name">Settings</div><div class="desc">Preferences</div></div>
+    </div>
+
+    <h2 class="section-head">Features</h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">auto_awesome</div>
+        <div class="feature-title">Siri-ish Assistant</div>
+        <div class="feature-desc">AI voice assistant with natural language understanding. Ask questions, control apps, calculate math, all locally.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">grid_view</div>
+        <div class="feature-title">Cards Overview</div>
+        <div class="feature-desc">See all open windows at a glance and switch between tasks effortlessly with gesture support.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">apps</div>
+        <div class="feature-title">App Drawer</div>
+        <div class="feature-desc">Access your apps quickly with a swipe-up gesture or click on the dock. Drag apps to customize.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">fingerprint</div>
+        <div class="feature-title">Biometric Login</div>
+        <div class="feature-desc">WebAuthn-powered Touch ID and Face ID support. Password or biometric unlock for your profile.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">terminal</div>
+        <div class="feature-title">Terminal</div>
+        <div class="feature-desc">UNIX-like shell with ls, cd, cat, echo, pwd, whoami, neofetch, uptime, cal, clear, and help.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">folder</div>
+        <div class="feature-title">File Manager</div>
+        <div class="feature-desc">Browse files with folder navigation, file sizes, and create/delete/rename operations.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">music_note</div>
+        <div class="feature-title">Music Player</div>
+        <div class="feature-desc">Built-in audio player with demo tracks, play/pause/next, progress bar, and shuffle.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">wb_sunny</div>
+        <div class="feature-title">Weather</div>
+        <div class="feature-desc">Live weather with temperature, conditions, humidity, wind speed, and location-based forecasts.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">calculate</div>
+        <div class="feature-title">Calculator</div>
+        <div class="feature-desc">Scientific calculator with history, keyboard support, and operation chaining.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">tune</div>
+        <div class="feature-title">Settings</div>
+        <div class="feature-desc">Customize wallpaper, accent color, dock, widgets, users, keyboard layout, and language.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">people</div>
+        <div class="feature-title">Multi-User</div>
+        <div class="feature-desc">Multiple user profiles with independent settings, passwords, and biometrics.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">cloud</div>
+        <div class="feature-title">Persistent Storage</div>
+        <div class="feature-desc">Settings, files, and data saved via IndexedDB and localStorage across sessions.</div>
       </div>
     </div>
 
@@ -253,10 +381,10 @@
       <div class="panel">
         <div class="panel-body">
           <p>OpenWebOS is an experimental project exploring what a browser-based operating system can look and feel like. Built entirely with web technologies, it runs entirely in your browser with no server-side processing.</p>
-          <p>The project is open source and maintained by the community. Contributions are welcome!</p>
+          <p>Features include biometric authentication via WebAuthn, a full UNIX-like terminal, file management, media playback, a Siri-like voice assistant, and a customizable desktop environment with wallpapers, accent colors, and widgets. The project is open source and maintained by the community.</p>
           <div class="about-links">
             <a class="btn waves-effect" href="https://github.com/openwebos-org" target="_blank" rel="noopener">View on GitHub</a>
-            <a class="btn waves-effect" href="get.html">Get Started</a>
+            <a class="btn primary waves-effect" href="https://openwebos-org.github.io/rc/rc-alpha" target="_blank" rel="noopener">Try OpenWebOS →</a>
           </div>
         </div>
       </div>

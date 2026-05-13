@@ -1,7 +1,7 @@
 # OpenWebOS
 An experimental OS-in-a-browser built entirely with HTML, CSS, and JavaScript. Runs client-side with no server dependencies.
 ## Try It
-Open `beta.html` in a browser, or visit the hosted version at **[openwebos-org.github.io](https://openwebos-org.github.io)**.
+Open `beta.html` in a browser, or visit the hosted version at **[openwebos-org.github.io](https://openwebos-org.github.io/rc/rc-alpha)**.
 ## Features
 ### Desktop Environment
 - **OOBE Setup** — First-run wizard: pick a wallpaper, accent color, create a user profile
